@@ -1,0 +1,1 @@
+{"name":"Ayush","age":24,"salary":12000.0,"residence":{"street":"Rashtrapati Bhawan","houseNumber":9}}
