@@ -1,8 +1,11 @@
 package Operations
 
 import java.io._
+
+import com.fasterxml.jackson.databind.ObjectMapper
 import org.apache.log4j.Logger
 import org.json4s._
+import org.json4s.jackson.Json
 import org.json4s.jackson.Serialization.write
 
 import scala.io.Source
@@ -20,5 +23,10 @@ object MainApp extends App {
   val fileWriter = new PrintWriter(new File("PersonDetails.txt"))
   fileWriter.write(writeDetails)
   fileWriter.close()
-  Source.fromFile("PersonDetails.txt").foreach{ x => log.info(x) }
+  val info = Source.fromFile("PersonDetails.txt").mkString
+  val map = Json.apply(formats).read[Person](info.toString)
+
+
+  log.info(map)
+
 }
